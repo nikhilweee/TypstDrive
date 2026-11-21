@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - deploy
     tags:
       - "v*"
   release:
@@ -21,7 +22,8 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: sirblobby/typstdrive
+  # Fork-only: publish to the fork owner's registry instead of upstream's.
+  IMAGE_NAME: ${{ github.repository_owner }}/typstdrive
   DEFAULT_PLATFORMS: "linux/amd64"
 
 jobs:
